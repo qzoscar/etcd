@@ -241,14 +241,16 @@ func (c *Config) validate() error {
 }
 
 type raft struct {
+	//节点id
 	id uint64
-
+	//当前任期号
 	Term uint64
+	//该节点投票对象，未投票时为None
 	Vote uint64
 
 	readStates []ReadState
 
-	// the log
+	// the log 本地log
 	raftLog *raftLog
 
 	maxMsgSize         uint64
@@ -288,8 +290,8 @@ type raft struct {
 	// valid message from current leader when it is a follower.
 	electionElapsed int
 
-	// number of ticks since it reached last heartbeatTimeout.
-	// only leader keeps heartbeatElapsed.
+	
+	// leader发送完最近一次心跳后又经过的tick数
 	heartbeatElapsed int
 
 	checkQuorum bool

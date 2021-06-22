@@ -120,7 +120,7 @@ type ProgressTracker struct {
 	Progress ProgressMap
 
 	Votes map[uint64]bool
-
+	//最大未响应消息阈值，如果当前未响应的消息数超过此值，将暂停发送消息
 	MaxInflight int
 }
 
